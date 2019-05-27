@@ -15,6 +15,7 @@ function App() {
         <Form>
 
         <CustomInput
+        required = "true"
         name = "name"
         type = "text"
         placeholder="Enter your name"
@@ -22,6 +23,7 @@ function App() {
         </CustomInput>
 
         <CustomInput
+        required = "true"
         name = "email"
         type = "email"
         placeholder="Enter your email"
@@ -29,17 +31,21 @@ function App() {
         </CustomInput>
 
         <CustomSelect
+        required = "true"
         name = "countries"
         srcUrl='/countries'/>
         <CustomSelect
+        required = "true"
         name = "states"
         srcUrl='/states'/>
         <CustomSelect
+        required = "true"
         name = "cities"
          srcUrl='/cities'/>
 
 
         <CustomInput
+        // required = "false"
         name = "phone number"
         type = "number"
         placeholder="Enter your phone number"
@@ -47,6 +53,7 @@ function App() {
         </CustomInput>
 
         <CustomTextarea
+        // required = "false"
         name = "About me"
         type = "textarea"
         placeholder="Would you like to tell us anything about you?"

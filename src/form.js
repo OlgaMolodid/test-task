@@ -44,7 +44,6 @@ export class Form extends Component {
                 children,
                 (ChildrenItem) => {
                   return React.cloneElement(ChildrenItem, {
-                    // ...ChildrenItem, было value: ChildrenItem.props.value,
                     value: ChildrenItem.name,
                     changeValue: this.changeValue,
                   })

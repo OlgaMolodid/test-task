@@ -5,27 +5,16 @@ class CustomTextarea extends Component {
 
   state = {
     value: "nothing",
-    required: false
+    // required: false
   }
 
    handler = (e)=> {
      this.setState({value: e.target.value});
-     console.log(this.state.value);
-     this.props.changeValue(this.state.name, this.state.value)
+     this.props.changeValue(this.props.name, this.state.value)
    }
 
-
-   // changeStatus = (selectedIndex, ch)=>()=>{
-   //   this.setState({
-   //     activeTogglerIndex: selectedIndex,
-   //
-   //   })
-   //
-   //   this.props.changeValue(this.props.name, ch[selectedIndex].props.name);
-   // };
-
    render = () =>{
-     let {name, type, placeholder, value} = this.props;
+     let {name, type, placeholder, value, required} = this.props;
      let {handler} = this;
      return (
      <label>

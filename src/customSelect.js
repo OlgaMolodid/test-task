@@ -5,7 +5,7 @@ class CustomSelect extends Component {
 
   state = {
     value: null,
-    required: true,
+    // required: true,
     options: []
   }
 
@@ -13,60 +13,10 @@ class CustomSelect extends Component {
     this.setState({value: e.target.value})
     this.props.changeValue(this.props.name, e.target.value)
   }
-  //
-  // fetch('http://localhost:8282/cities/5')
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     console.log(data);
-  //   })
-  //
-  //   fetch(
-  //     'http://localhost:8282/users', {
-  //       method: 'get',
-  //     }
-  //   )
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       console.log(data);
-  //     })
-  //     // fetch(
-  //     //   'http://localhost:8282/users/6', {
-  //     //     method: 'DELETE'
-  //     // })
-  //     //   .then(res => res.json())
-  //     //   .then(data => {
-  //     //     console.log(data);
-  //     //   })
-  //       fetch(
-  //         'http://localhost:8282/users', {
-  //           method: 'post',
-  //           body: {
-  //             "id": "4",
-  //             "name": "Arnold Shwartz",
-  //             "email": "r.f@gmail.com",
-  //             "phone_number": "380631213141",
-  //             "address": null,
-  //             "about_me": null,
-  //             "country_id": "1",
-  //             "state_id": "13",
-  //             "city_id": "5"
-  //           },
-  //           headers: {
-  //             'Content-Type': 'application/json'
-  //           }
-  //       })
-  //         .then(res => res.json())
-  //         .then(data => {
-  //           console.log(data);
-  //         });
-  componentDidMount(){//сюда надо передавать requestOption??
 
-    // fetch('http://localhost:8282/cities/5')
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data);
-    //   })
-    //
+  componentDidMount(){
+
+
     let requestOption;
     const { srcUrl } = this.props;
     let requestUrl = `http://localhost:8282${srcUrl}`;
@@ -83,12 +33,18 @@ class CustomSelect extends Component {
 
    render = () =>{
      let {handler} = this;
-     let {name, type, placeholder, value} = this.props;
+     let {name, type, placeholder, value, required} = this.props;
      let {options} = this.state;
      return (
      <label>
        <div>{name}</div>
-       <select onChange = {handler}>
+       <select
+       className={
+            required === true
+                ? " required"
+                : ""
+        }
+        onChange = {handler}>
           {
             (!this.state.value)
               ? <option value={null}></option>

@@ -5,39 +5,64 @@ class CustomInput extends Component {
 
   state = {
     value: "nothing",
-    required: true
+    // required: true
   }
 
    handler = (e)=> {
      this.setState({value: e.target.value});
-     // console.log(this.state.value);
      this.props.changeValue(this.props.name, this.state.value)
    }
 
 
-   // changeStatus = (selectedIndex, ch)=>()=>{
-   //   this.setState({
-   //     activeTogglerIndex: selectedIndex,
-   //
-   //   })
-   //
-   //   this.props.changeValue(this.props.name, ch[selectedIndex].props.name);
-   // };
-
    render = () =>{
-     let {name, type, placeholder, value} = this.props;
+     let {name, type, placeholder, value, required} = this.props;
      let {handler} = this;
+
      return (
      <label>
        <div>{name}</div>
+
        <input
+        className={
+          required === true ? "required-input" : ""}
          type={type}
          placeholder={placeholder}
          value={value}
          onChange={handler}
        />
+       <span class="help-text"></span>
      </label>
-   )
+     )
+
+ //     if(required===true){
+ //     return (
+ //     <label>
+ //       <div>{name}</div>
+ //
+ //       <input
+ //        className="required-input"
+ //         type={type}
+ //         placeholder={placeholder}
+ //         value={value}
+ //         onChange={handler}
+ //       />
+ //       <span class="help-text"></span>
+ //     </label>
+ //   )
+ // } else {
+ //     return (
+ //     <label>
+ //       <div>{name}</div>
+ //
+ //       <input
+ //         type={type}
+ //         placeholder={placeholder}
+ //         value={value}
+ //         onChange={handler}
+ //       />
+ //     </label>
+ //   )
+ //   }
    }
 
 }
