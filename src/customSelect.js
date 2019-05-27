@@ -38,9 +38,9 @@ class CustomSelect extends Component {
      return (
      <label>
        <div>{name}</div>
-       <select
+       <select 
        className={
-            required === true
+            required === "true"
                 ? " required"
                 : ""
         }
@@ -62,6 +62,7 @@ class CustomSelect extends Component {
   }
 
      </select>
+      <span class="help-text"></span>
      </label>
    )
    }

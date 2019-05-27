@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .hidden-class {
@@ -7,11 +7,12 @@
 }
 
 .required {
-
-  color: red;
+  border-radius: 4px ;
+  border-color: red;
 }
-input:required + .help-text::before {
+.required + .help-text::before {
  content: '*Required';
+ color: red;
 }
 
 .App-link {

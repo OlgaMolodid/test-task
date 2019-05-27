@@ -14,7 +14,7 @@ class CustomTextarea extends Component {
    }
 
    render = () =>{
-     let {name, type, placeholder, value, required} = this.props;
+     let {name, placeholder, value, required} = this.props;
      let {handler} = this;
      return (
      <label>

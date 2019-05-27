@@ -6,6 +6,8 @@ import CustomInput from "./customInput";
 import CustomTextarea from "./CustomTextarea";
 import Form from "./form";
 import CustomSelect from "./customSelect";
+import UserItem from "./user_item";
+
 
 function App() {
 
@@ -62,6 +64,10 @@ function App() {
 
 
             </Form>
+            <UserItem
+            srcUrl='/users'/>
+
+
         </div>
 
   );

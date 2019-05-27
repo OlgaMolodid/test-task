@@ -24,7 +24,7 @@ class CustomInput extends Component {
 
        <input
         className={
-          required === true ? "required-input" : ""}
+          required === "true" ? "required" : ""}
          type={type}
          placeholder={placeholder}
          value={value}

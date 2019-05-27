@@ -9,20 +9,36 @@ export class Form extends Component {
       countries: "",
       states: "",
       cities: "",
-      phoneNumber: "",
-      aboutMe: ""
+      phone_number: "",
+      about_me: ""
 
     };
 
-    // showData = (e) =>{
-    //   e.preventDefault();
-    //   console.log("name: ", this.state.name,
-    //               ", password: ", this.state.password,
-    //               ", gender: ", this.state.gender,
-    //               ", age: ", this.state.age,
-    //               ", layout: ", this.state.layout,
-    //               ", language: ", this.state.language);
-    // }
+    add = (e) => {
+      e.preventDefault();
+
+      // let {name, email, countries, states, cities, phone_number, about_me} = this.state;
+      //
+      //       fetch("http://localhost:8282/users", {
+      //           method: "post",
+      //           headers: {
+      //               "Content-Type": "application/json"
+      //           },
+      //           body: JSON.stringify({
+      //
+      //               "name": {name},
+      //               "email": {email},
+      //               "phone_number": {phone_number},
+      //               "address": null,
+      //               "about_me": {about_me},
+      //               "country_id": {countries},
+      //               "state_id": {states},
+      //               "city_id": {cities}
+      //           })
+      //
+      //       })
+      console.log("weeeee");
+        }
 
     changeValue = (controlName, value) => {
       // console.log("change value:", controlName, value);
@@ -31,7 +47,7 @@ export class Form extends Component {
     }
 
     render = () =>{
-      let {showData} = this;
+      let {add} = this;
       let {children} = this.props;
       let {name} = this.state;
 
@@ -51,25 +67,8 @@ export class Form extends Component {
             )
           }
 
-                <p><input type="submit" className="togglerItem" onClick={showData}></input></p>
-                {
+                <p><input type="submit" className="togglerItem" onClick={add}></input></p>
 
-                    // React.Children.map(
-                    //     children,
-                    //     (ChildrenItem) => {
-                    //       for (let key in this.state){
-                    //
-                    //         if (ChildrenItem.props.name === key){
-                    //         this.setState({key: ChildrenItem.props.value})
-                    //         console.log(key);
-                    //         // console.log(this.state[key]);
-                    //       }
-                    //
-                    //       }
-                    //
-                    //     }
-                    // )
-                }
             </form>
       );
     }
