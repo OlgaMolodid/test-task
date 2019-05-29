@@ -1,5 +1,4 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 
 import CustomInput from "./customInput";
@@ -13,62 +12,66 @@ function App() {
 
   return (
 
-        <div className="App">
-        <Form>
+    <div className="App">
+      <Form>
 
         <CustomInput
-        required = "true"
-        name = "name"
-        type = "text"
-        placeholder="Enter your name"
+          required="true"
+          name="name"
+          type="text"
+          placeholder="Enter your name"
         >
         </CustomInput>
 
         <CustomInput
-        required = "true"
-        name = "email"
-        type = "email"
-        placeholder="Enter your email"
+          required="true"
+          name="email"
+          type="email"
+          placeholder="Enter your email"
         >
         </CustomInput>
 
         <CustomSelect
-        required = "true"
-        name = "countries"
-        srcUrl='/countries'/>
+          id='countriesId'
+          required="true"
+          name="countries"
+          srcUrl='/countries' />
         <CustomSelect
-        required = "true"
-        name = "states"
-        srcUrl='/states'/>
+          id='statesId'
+          required="true"
+          name="states"
+          srcUrl='/states' />
         <CustomSelect
-        required = "true"
-        name = "cities"
-         srcUrl='/cities'/>
+          id='citiesId'
+          required="true"
+          name="cities"
+          srcUrl='/cities' />
 
 
         <CustomInput
-        // required = "false"
-        name = "phone number"
-        type = "number"
-        placeholder="Enter your phone number"
+          // required = "false"
+          name="phone_number"
+          type="number"
+          placeholder="Enter your phone number"
         >
         </CustomInput>
 
         <CustomTextarea
-        // required = "false"
-        name = "About me"
-        type = "textarea"
-        placeholder="Would you like to tell us anything about you?"
+          limit={500}
+          required="false"
+          name="about_me"
+          type="textarea"
+          placeholder="Would you like to tell us anything about you?"
         >
         </CustomTextarea>
 
 
-            </Form>
-            <UserItem
-            srcUrl='/users'/>
+      </Form>
+      <UserItem
+        srcUrl='/users' />
 
 
-        </div>
+    </div>
 
   );
 }

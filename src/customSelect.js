@@ -1,23 +1,34 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
 
 class CustomSelect extends Component {
 
+  constructor(props) {
+    super(props)
+    this.selectRef = React.createRef();
+
+    props.getRef(this.selectRef, props.name)
+  }
   state = {
     value: null,
-    // required: true,
-    options: []
+    required: true,
+    options: [],
   }
 
+
   handler = (e) => {
-    this.setState({value: e.target.value})
+    // if (this.props.id === 'countriesId') {
+      // document.getElementById('statesId').removeAttribute('hidden')
+      // document.getElementById('citiesId').removeAttribute('hidden')
+    // }
+    this.setState({ value: e.target.value })
     this.props.changeValue(this.props.name, e.target.value)
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
 
-    let requestOption;
+
     const { srcUrl } = this.props;
     let requestUrl = `http://localhost:8282${srcUrl}`;
 
@@ -25,47 +36,56 @@ class CustomSelect extends Component {
       res => res.json()
     ).then(
       data => {
-        console.log(data);
-        this.setState({options: data});
-          })
+
+        this.setState({ options: data });
+      })
   }
+  
+  // componentDidMount = () => {
+  //   this.selectRef.id = this.props.id
+  // }
 
-
-   render = () =>{
-     let {handler} = this;
-     let {name, type, placeholder, value, required} = this.props;
-     let {options} = this.state;
-     return (
-     <label>
-       <div>{name}</div>
-       <select 
-       className={
+  render = () => {
+    let { handler } = this;
+    let { name,  required } = this.props;
+    let { options } = this.state;
+    return (
+      <label className = "pole"
+      ref = {this.selectRef}
+      // id={this.props.id}
+      
+      hidden={this.props.id !== 'countriesId' ? true : false}>
+        <div className = "pole">{name}</div>
+        <select
+          
+          className={
             required === "true"
-                ? " required"
-                : ""
-        }
-        onChange = {handler}>
+              ? " required input"
+              : "input"
+          }
+          onChange={handler}>
           {
             (!this.state.value)
               ? <option value={null}></option>
               : null
-            }
-            {
+          }
+          {
 
-      options.map((item, ind) =>
+            options.map((item, ind) =>
 
-        <option
-          key={ind}
-          value={item.name}
+              <option
+                key={ind}
+                value={item.id}
 
-        >{item.name}</option>)
+              >{item.name}</option>)
+          }
+
+        </select>
+        <span class="help-text"></span>
+        <p></p>
+      </label>
+    )
   }
-
-     </select>
-      <span class="help-text"></span>
-     </label>
-   )
-   }
 
 }
 
@@ -73,4 +93,4 @@ class CustomSelect extends Component {
 
 
 
-   export default CustomSelect;
+export default CustomSelect;

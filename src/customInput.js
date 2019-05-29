@@ -10,7 +10,8 @@ class CustomInput extends Component {
 
    handler = (e)=> {
      this.setState({value: e.target.value});
-     this.props.changeValue(this.props.name, this.state.value)
+     this.props.changeValue(this.props.name, e.target.value)
+//     this.props.changeValue(this.props.name, this.state.value)
    }
 
 
@@ -19,50 +20,25 @@ class CustomInput extends Component {
      let {handler} = this;
 
      return (
-     <label>
-       <div>{name}</div>
+     <label
+     className="pole"
+     >
+       <div className = "pole">{name}</div>
 
        <input
         className={
-          required === "true" ? "required" : ""}
+          required === "true" ? "input required" : "input"}
          type={type}
          placeholder={placeholder}
          value={value}
          onChange={handler}
        />
        <span class="help-text"></span>
+       <p></p>
+
      </label>
      )
 
- //     if(required===true){
- //     return (
- //     <label>
- //       <div>{name}</div>
- //
- //       <input
- //        className="required-input"
- //         type={type}
- //         placeholder={placeholder}
- //         value={value}
- //         onChange={handler}
- //       />
- //       <span class="help-text"></span>
- //     </label>
- //   )
- // } else {
- //     return (
- //     <label>
- //       <div>{name}</div>
- //
- //       <input
- //         type={type}
- //         placeholder={placeholder}
- //         value={value}
- //         onChange={handler}
- //       />
- //     </label>
- //   )
- //   }
    }
 
 }
@@ -72,7 +48,7 @@ class CustomInput extends Component {
 
        placeholder: PropTypes.string,
        handler: PropTypes.func,
-       type: PropTypes.oneOf(['text', 'password', 'number']),
+       type: PropTypes.oneOf(['text', 'password', 'number', 'email']),
        value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.any,
