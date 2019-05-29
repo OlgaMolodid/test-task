@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class CustomInput extends Component {
 
   state = {
-    value: "nothing",
+    value: null,
     // required: true
   }
 

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import UserItem from "./user_item";
 
 
-
 export class Form extends Component {
   state = {
     name: "",
@@ -31,7 +30,10 @@ export class Form extends Component {
   add = (e) => {
     e.preventDefault();
 
-    let { name, email, countries, states, cities, phone_number, about_me, users } = this.state;
+    let { name, email, countries, states, cities, phone_number, about_me } = this.state;
+    if((name==="")||(email==="")||(countries==="")||(states==="")||(cities==="")){
+      alert("fill required fields")
+    }else{
 
     fetch("http://localhost:8282/users", {
       method: "post",
@@ -50,11 +52,11 @@ export class Form extends Component {
         "city_id": cities
       })
 
-    });
-
-    this.refreshData();
-    
-    
+    })           
+     .then(() => {
+      this.refreshData()
+  })
+}
 
   }
 
@@ -81,7 +83,7 @@ export class Form extends Component {
 
   render = () => {
     let { users } = this.state;
-    let { add, getRef } = this;
+    let { add, getRef, refreshData } = this;
     let { children } = this.props;
     // let {name} = this.state;
 
@@ -94,6 +96,7 @@ export class Form extends Component {
           React.Children.map(
             children,
             (ChildrenItem) => {
+
               return React.cloneElement(ChildrenItem, {
 
                 value: ChildrenItem.name,
@@ -101,6 +104,7 @@ export class Form extends Component {
                 getRef
               })
             }
+
           )
         }
         <div className="sub">

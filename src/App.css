@@ -64,7 +64,7 @@ form .sub button {
   	border-left: 1px solid #8CBFD9;
   	border-right: 1px solid #8CBFD9;
   	border-radius: 15px;
-	color: #FFF;
+	color: #3CA1D9;
   	font: bold 13px Arial, Tahoma, sans-serif;
 	box-shadow: inset 0 1px #D4EBF7, 0 1px 3px #B8BEBE;
 	background: -moz-linear-gradient(top,  #badff3 0%, #7acbed 100%);
@@ -109,4 +109,16 @@ table{
 tr,td{
   background: #FEFEFE;
   border: 1px solid #CAD8DE;
+}
+h1{
+  font-family: 'Righteous';
+  color: #3CA1D9; 
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  font-size: 3em;
+  padding: 11px 60px;
+  margin: 0; 
+  line-height: 1;
 }

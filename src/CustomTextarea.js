@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class CustomTextarea extends Component {
 
   state = {
-    value: "nothing",
+    value: null,
     required: false
   }
 

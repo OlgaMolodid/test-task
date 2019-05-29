@@ -41,15 +41,7 @@ class UserItem extends Component {
       })
 
 
-    // const { srcUrl } = this.props;
-    // requestUrl = `http://localhost:8282${srcUrl}`;
 
-    // fetch(requestUrl).then(
-    //   res => res.json()
-    // ).then(
-    //   data => {
-    //     this.setState({ users: data });
-    //   })
   }
 
 
@@ -68,7 +60,7 @@ class UserItem extends Component {
 
   getDate = (date) => {
     let a = new Date(date);
-    let b = a.getDate() + "/" + a.getMonth() + "/" + a.getFullYear();
+    let b = a.getDate() + "/" + (a.getMonth()*1+1) + "/" + a.getFullYear();
     return b;
   }
 
