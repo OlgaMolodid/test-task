@@ -67,8 +67,9 @@ function App() {
 
 
       </Form>
-      <UserItem
-        srcUrl='/users' />
+      {/* <UserItem
+        name = "users"
+        srcUrl='/users' /> */}
 
 
     </div>

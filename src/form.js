@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserItem from "./user_item";
 
 
 
@@ -14,12 +15,23 @@ export class Form extends Component {
     countriesRef: {},
     statesRef: {},
     citiesRef: {},
+    users: [],
   };
+
+  refreshData = () =>{
+    fetch(`http://localhost:8282/users`).then(
+      res => res.json()
+    ).then(
+      data => {
+        this.setState({ users: data });
+      })
+  }
+
 
   add = (e) => {
     e.preventDefault();
 
-    let { name, email, countries, states, cities, phone_number, about_me } = this.state;
+    let { name, email, countries, states, cities, phone_number, about_me, users } = this.state;
 
     fetch("http://localhost:8282/users", {
       method: "post",
@@ -38,8 +50,17 @@ export class Form extends Component {
         "city_id": cities
       })
 
-    })
-    console.log("weeeee");
+    });
+
+    this.refreshData();
+    
+    
+
+  }
+
+  componentDidMount(){
+
+    this.refreshData();
   }
 
   changeValue = (controlName, value) => {
@@ -59,12 +80,14 @@ export class Form extends Component {
   } 
 
   render = () => {
+    let { users } = this.state;
     let { add, getRef } = this;
     let { children } = this.props;
     // let {name} = this.state;
 
 
     return (
+      <div>
 
       <form>
         {
@@ -84,6 +107,10 @@ export class Form extends Component {
           <p><button type="submit" onClick={add}>SUBMIT</button></p>
         </div>
       </form>
+
+      <UserItem users={users}/>
+
+      </div>
     );
   }
 

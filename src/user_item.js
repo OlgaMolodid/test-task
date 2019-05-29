@@ -41,15 +41,15 @@ class UserItem extends Component {
       })
 
 
-    const { srcUrl } = this.props;
-    requestUrl = `http://localhost:8282${srcUrl}`;
+    // const { srcUrl } = this.props;
+    // requestUrl = `http://localhost:8282${srcUrl}`;
 
-    fetch(requestUrl).then(
-      res => res.json()
-    ).then(
-      data => {
-        this.setState({ users: data });
-      })
+    // fetch(requestUrl).then(
+    //   res => res.json()
+    // ).then(
+    //   data => {
+    //     this.setState({ users: data });
+    //   })
   }
 
 
@@ -66,51 +66,52 @@ class UserItem extends Component {
     return (city) ? city.name : ''
   }
 
-  getDate = (date)=> {
- let a = new Date(date);
- let b = a.getDate() + "/" +a.getMonth() + "/" + a.getFullYear();
- return b;
+  getDate = (date) => {
+    let a = new Date(date);
+    let b = a.getDate() + "/" + a.getMonth() + "/" + a.getFullYear();
+    return b;
   }
 
   render = () => {
 
-
- const {getDate} = this;
- const {getState, getCountry, getCity} = this;
-    const { users } = this.state;
+    const { name } = this.props;
+    const { getDate } = this;
+    const { getState, getCountry, getCity } = this;
+    const { users } = this.props;
     return (
       <div>
-        <table>
-          <tr className = "header">
-            <td>Name</td>
-            <td>Email</td>
-            <td>Phone number</td>
-            <td>Country, state, city</td>
-            <td>Creation date</td>
-          </tr>
+      <div >{name}</div>
+      <table>
+        <tr className="header">
+          <td>Name</td>
+          <td>Email</td>
+          <td>Phone number</td>
+          <td>Country, state, city</td>
+          <td>Creation date</td>
+        </tr>
 
 
-          {
-            users.map((user, ind) =>
-              <tr key={ind} className="guest">
-                <td>{(user.name && typeof user.name === "string")
-                  ? user.name
-                  : "smth wrong"}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone_number}</td>
-                  
-                  
-                  <td>{getCountry(user.country_id)}, {getState(user.state_id)}, {getCity(user.city_id)}</td>
-                  <td>{getDate(user.createdAt)}</td>
-
-                
-              </tr>
-            )
-          }
+        {
+          users.map((user, ind) =>
+            <tr key={ind} className="guest">
+              <td>{(user.name && typeof user.name === "string")
+                ? user.name
+                : "smth wrong"}</td>
+              <td>{user.email}</td>
+              <td>{user.phone_number}</td>
 
 
-        </table>
-      </div>
+              <td>{getCountry(user.country_id)}, {getState(user.state_id)}, {getCity(user.city_id)}</td>
+              <td>{getDate(user.createdAt)}</td>
+
+
+            </tr>
+          )
+        }
+
+
+      </table>
+      </div >
     )
   }
 }

@@ -17,10 +17,7 @@ class CustomSelect extends Component {
 
 
   handler = (e) => {
-    // if (this.props.id === 'countriesId') {
-      // document.getElementById('statesId').removeAttribute('hidden')
-      // document.getElementById('citiesId').removeAttribute('hidden')
-    // }
+
     this.setState({ value: e.target.value })
     this.props.changeValue(this.props.name, e.target.value)
   }
